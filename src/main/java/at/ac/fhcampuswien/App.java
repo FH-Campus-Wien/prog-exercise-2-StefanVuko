@@ -6,27 +6,164 @@ public class App {
 
     //todo Task 1
     public void largestNumber(){
-        // input your solution here
+        int count = 1;
+        double biggestNumber = 0;
+        double number;
+        Scanner scanner = new Scanner(System.in);
+
+        while (true)
+        {
+            System.out.print("Number " + count + ": ");
+            number = scanner.nextDouble();
+            if (count == 1 && number <= 0)
+            {
+                System.out.println("No number entered.");
+                break;
+            }
+            if (number <= 0)
+            {
+                System.out.printf("The largest number is " + String.format("%.2f", biggestNumber));
+                System.out.println();
+                break;
+            }
+            if (biggestNumber < number)
+            {
+                biggestNumber = number;
+            }
+            count++;
+        }
     }
 
     //todo Task 2
     public void stairs(){
-        // input your solution here
+        int numberOfLines;
+        int number = 1;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("n: ");
+        numberOfLines = scanner.nextInt();
+
+        if (numberOfLines <= 0)
+        {
+            System.out.println("Invalid number!");
+        }
+        else
+        {
+            for (int i = 0; i < numberOfLines; i++)
+            {
+                for (int f = 0; f <= i; f++)
+                {
+                    System.out.print(number + " ");
+                    number++;
+                }
+                System.out.println();
+            }
+        }
+
     }
 
     //todo Task 3
     public void printPyramid(){
-        // input your solution here
+        final int ROWS = 6;
+
+        for (int i = 1; i <= ROWS; i++)
+        {
+            for (int e = i; e < ROWS; e++)
+            {
+                System.out.print(" ");
+            }
+            for (int f = 0; f < (i*2) - 1; f++)
+            {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
     }
 
     //todo Task 4
     public void printRhombus(){
-        // input your solution here
+        int height;
+        char character;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("h: ");
+        height = scanner.nextInt();
+
+        System.out.print("c: ");
+        character = scanner.next().charAt(0);
+        int valueOfChar = character;
+
+        if (height % 2 == 0)
+        {
+            System.out.println("Invalid number!");
+            return;
+        }
+
+        //Upper part
+        for (int i = 1; i <= (height / 2) + 1; i++)
+        {
+            for (int e = i; e < (height / 2) + 1; e++)
+            {
+                System.out.print(" ");
+            }
+            for (int f = 0; f < (i*2) - 1; f++)
+            {
+                System.out.print(character);
+            }
+            System.out.println();
+        }
+
+        //Lower part
+        for (int i = (height / 2); i >= 1; i--)
+        {
+            for (int e = i; e < (height / 2) + 1; e++)
+            {
+                System.out.print(" ");
+            }
+            for (int f = 0; f < (i*2) - 1; f++)
+            {
+                System.out.print(character);
+            }
+            System.out.println();
+        }
     }
 
     //todo Task 5
     public void marks(){
-        // input your solution here
+        int count = 1;
+        int amountOfMarks = 0;
+        int sumOfMarks = 0;
+        int negativeMarks = 0;
+        double averageMark = 0;
+        Scanner scanner = new Scanner(System.in);
+
+        while (true)
+        {
+            System.out.print("Mark " + count + ": ");
+            int number = scanner.nextInt();
+            if (number == 0)
+            {
+                if (amountOfMarks != 0)
+                    averageMark = (double)sumOfMarks / (double)amountOfMarks;
+
+                System.out.println("Average: " + String.format("%.2f", averageMark));
+                System.out.println("Negative marks: " + negativeMarks);
+                break;
+            }
+            if (number > 0 && number <= 5)
+            {
+                if (number == 5)
+                    negativeMarks++;
+
+                sumOfMarks += number;
+                count++;
+                amountOfMarks++;
+            }
+            else
+            {
+                System.out.println("Invalid mark!");
+            }
+        }
     }
 
     //todo Task 6
