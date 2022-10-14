@@ -102,13 +102,31 @@ public class App {
         //Upper part
         for (int i = 1; i <= (height / 2) + 1; i++)
         {
+            double numberOfStars = (i*2) - 1;
+            double halfStars = numberOfStars / 2;
+            double counter = halfStars - 0.5;
+
             for (int e = i; e < (height / 2) + 1; e++)
             {
                 System.out.print(" ");
             }
             for (int f = 0; f < (i*2) - 1; f++)
             {
-                System.out.print(character);
+                if (halfStars - 0.5 == f)
+                {
+                    System.out.print(character);
+                    counter = 1;
+                }
+                else if (halfStars - 0.5 < f)
+                {
+                    System.out.print((char)(valueOfChar - counter));
+                    counter++;
+                }
+                else if (halfStars - 0.5 > f)
+                {
+                    System.out.print((char)(valueOfChar - counter));
+                    counter--;
+                }
             }
             System.out.println();
         }
@@ -116,13 +134,31 @@ public class App {
         //Lower part
         for (int i = (height / 2); i >= 1; i--)
         {
+            double numberOfStars = (i*2) - 1;
+            double halfStars = numberOfStars / 2;
+            double counter = halfStars - 0.5;
+
             for (int e = i; e < (height / 2) + 1; e++)
             {
                 System.out.print(" ");
             }
             for (int f = 0; f < (i*2) - 1; f++)
             {
-                System.out.print(character);
+                if (halfStars - 0.5 == f)
+                {
+                    System.out.print(character);
+                    counter = 1;
+                }
+                else if (halfStars - 0.5 < f)
+                {
+                    System.out.print((char)(valueOfChar - counter));
+                    counter++;
+                }
+                else if (halfStars - 0.5 > f)
+                {
+                    System.out.print((char)(valueOfChar - counter));
+                    counter--;
+                }
             }
             System.out.println();
         }
@@ -168,7 +204,40 @@ public class App {
 
     //todo Task 6
     public void happyNumbers(){
-        // input your solution here
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("n: ");
+
+        int number = scanner.nextInt();
+        int sum = 0;
+        int finalResult = 0;
+
+        while(true)
+        {
+            int digit = number % 10;
+            sum += Math.pow(digit, 2);
+
+            number = number / 10;
+
+            if(number == 0)
+            {
+                number = sum;
+                finalResult = sum;
+                sum = 0;
+            }
+
+            if (finalResult == 1)
+            {
+                System.out.println("Happy number!");
+                break;
+            }
+            if (finalResult == 4)
+            {
+                System.out.println("Sad number!");
+                break;
+            }
+        }
+
     }
 
     public static void main(String[] args){
